@@ -24,7 +24,7 @@ import './theme/variables.css';
 
 import { hot } from 'react-hot-loader/root';
 
-import { Landing } from './pages/landing'
+import { Landing } from './pages/landing';
 
 const App = () => {
   return (
@@ -33,9 +33,9 @@ const App = () => {
         <IonSplitPane contentId="main">
           <div>Menu</div>
           <IonRouterOutlet id="main">
-              <Route path="/" component={Landing} />
+            <Route path="/" component={Landing} />
           </IonRouterOutlet>
-          
+
           <div id="main">React with Webpack and Babel</div>
         </IonSplitPane>
       </IonReactRouter>
