@@ -1,5 +1,7 @@
 import React from 'react';
-import { IonApp, IonSplitPane } from '@ionic/react';
+import { Route } from 'react-router-dom';
+import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,13 +24,21 @@ import './theme/variables.css';
 
 import { hot } from 'react-hot-loader/root';
 
+import { Landing } from './pages/landing'
+
 const App = () => {
   return (
     <IonApp>
-      <IonSplitPane contentId="main">
-        <div>Menu</div>
-        <div id="main">React with Webpack and Babel</div>
-      </IonSplitPane>
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <div>Menu</div>
+          <IonRouterOutlet id="main">
+              <Route path="/" component={Landing} />
+          </IonRouterOutlet>
+          
+          <div id="main">React with Webpack and Babel</div>
+        </IonSplitPane>
+      </IonReactRouter>
     </IonApp>
   );
 };

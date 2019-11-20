@@ -7,11 +7,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: ['babel-loader', 'source-map-loader'],
-        exclude: /node_modules/,
-      },
-      {
         test: /\.tsx?$/,
         use: [
           {
@@ -20,6 +15,7 @@ module.exports = {
               silent: true,
               useBabel: true,
               babelOptions: {
+                babelrc: false,
                 compact: process.env.NODE_ENV === 'production',
                 highlightCode: true,
               },
@@ -28,6 +24,7 @@ module.exports = {
             }
           },
         ],
+        exclude: /node_mdules/
       },
       {
         test: /\.css$/,

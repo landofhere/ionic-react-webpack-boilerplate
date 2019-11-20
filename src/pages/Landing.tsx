@@ -1,4 +1,10 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react';
 import React from 'react';
 
 export const Landing: React.FC = () => {
@@ -9,9 +15,7 @@ export const Landing: React.FC = () => {
           <IonTitle>Landing</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        Content
-      </IonContent>
+      <IonContent className="ion-padding">Content</IonContent>
     </IonPage>
   );
 };
