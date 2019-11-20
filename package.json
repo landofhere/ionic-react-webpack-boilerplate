@@ -4,13 +4,18 @@
   "description": "Boilerplate for Ionic React. Webpack 4, Redux 7",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config build-utils/webpack.config.js --env.env=dev --open --hot ",
-    "build": "webpack --config build-utils/webpack.config.js --env.env=prod",
+    "start": "webpack-dev-server --config tools/webpack.config.js --env.env=dev --open --hot ",
+    "build": "webpack --config tools/webpack.config.js --env.env=prod",
     "build:analyze": "npm run build -- --env.addon=bundleanalyze --env.addon=bundlevisualizer",
-    "test": "jest -u --coverage --verbose --passWithNoTests --runInBand --detectOpenHandles --setupFiles dotenv/config",
+    "test": "jest --runInBand --detectOpenHandles --setupFiles dotenv/config",
     "test:watch": "jest -u --runInBand --verbose --watch --detectOpenHandles --setupFiles dotenv/config",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "pre-commit": "npm run format"
+    "test:coverage": "jest -u --coverage --verbose --runInBand --detectOpenHandles --setupFiles dotenv/config",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
   },
   "keywords": [
     "ionic",
@@ -24,6 +29,7 @@
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
+    "@babel/preset-typescript": "^7.7.2",
     "@capacitor/cli": "1.3.0",
     "@testing-library/react": "^9.3.2",
     "@types/googlemaps": "^3.38.0",
@@ -33,6 +39,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router": "^5.0.3",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-test-renderer": "^16.9.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
@@ -50,12 +57,14 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "jest-environment-jsdom-fourteen": "^0.1.0",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
     "prettier-tslint": "^0.4.2",
     "react-hot-loader": "^4.12.18",
+    "react-test-renderer": "^16.12.0",
     "rimraf": "^3.0.0",
     "sass-loader": "^8.0.0",
     "source-map-loader": "^0.2.4",
@@ -94,9 +103,18 @@
       "node_modules",
       "src"
     ],
-    "transformIgnorePatterns": [],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$'",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "preset": "ts-jest",
+    "testEnvironment": "jest-environment-jsdom-fourteen",
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.tsx?$": "ts-jest",
+      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/tools/jest/fileTransform.js"
     },
     "testRegex": "((\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
@@ -106,7 +124,6 @@
       "jsx",
       "json",
       "node"
-    ],
-    "testEnvironment": "node"
+    ]
   }
 }

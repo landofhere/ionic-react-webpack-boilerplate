@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing snapshot renders 1`] = `
+<div
+  className="ion-page"
+>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Landing
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    Content
+  </ion-content>
+</div>
+`;

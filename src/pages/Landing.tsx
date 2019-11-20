@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 
-const Landing: React.FC = () => {
+export const Landing: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
