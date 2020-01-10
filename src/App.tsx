@@ -26,17 +26,17 @@ import { hot } from 'react-hot-loader/root';
 
 import { Landing } from './pages/landing';
 
+import { Menu } from './components/menu';
+
 const App = () => {
   return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <div>Menu</div>
+          <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" component={Landing} />
           </IonRouterOutlet>
-
-          <div id="main">React with Webpack and Babel</div>
         </IonSplitPane>
       </IonReactRouter>
     </IonApp>

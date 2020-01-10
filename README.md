@@ -26,6 +26,15 @@ npm start
 
 Visit [http://localhost:8080/](http://localhost:8080/)
 
+## Testing
+
+```
+npm run test
+\\ or
+npm run test:watch
+
+```
+
 ## Notes
 
 - **Environment variables:** There's a separate .env for dev and prod.
